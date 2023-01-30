@@ -10,5 +10,6 @@ public interface AddressBookService {
 
     AddressBook generateAddressBookFromFile(File file) throws FileNotFoundException;
     AddressBookEntry findOldestPerson(AddressBook addressBook);
+    int countAmountOfGender(AddressBook addressBook, String gender);
 
 }

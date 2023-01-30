@@ -49,6 +49,15 @@ public class AddressBookServiceImpl implements AddressBookService {
 
         return oldestPerson;
     }
+    public int countAmountOfGender(AddressBook addressBook, String gender) {
+        int amount = 0;
+        for (AddressBookEntry addressBookEntry : addressBook.getAddressBookEntries()) {
+            if (addressBookEntry.gender().equalsIgnoreCase(gender)) {
+                amount += 1;
+            }
+        }
+        return amount;
+    }
 
     private boolean compareAge(AddressBookEntry firstPerson, AddressBookEntry secondPerson) {
         return firstPerson.dateOfBirth().isBefore(secondPerson.dateOfBirth());

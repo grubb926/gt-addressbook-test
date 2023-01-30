@@ -67,6 +67,18 @@ class AddressBookServiceImplTest {
         assertEquals(addressBook.getAddressBookEntries().get(1), result);
     }
 
+    @Test
+    public void whenFindingAmountOfSpecifiedGender_andGenderIsFemale_thenReturnsThree() {
+        final int result = addressBookService.countAmountOfGender(setUpExpectedAddressBook(), "female");
+        assertEquals(3, result);
+    }
+
+    @Test
+    public void whenFindingAmountOfSpecifiedGender_andGenderIsMale_thenReturnsTwo() {
+        final int result = addressBookService.countAmountOfGender(setUpExpectedAddressBook(), "male");
+        assertEquals(2, result);
+    }
+
     private List<List<String>> setUpFileServiceReturnList() {
         final List<List<String>> addressBook = new ArrayList<>();
 
