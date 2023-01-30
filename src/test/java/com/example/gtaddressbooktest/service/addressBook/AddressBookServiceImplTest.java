@@ -60,6 +60,12 @@ class AddressBookServiceImplTest {
         when(fileService.readFromFile(invalidFile)).thenThrow(FileNotFoundException.class);
         Assertions.assertThrows(FileNotFoundException.class, () -> addressBookService.generateAddressBookFromFile(invalidFile));
     }
+    @Test
+    public void whenFindingOldestPerson_returnsEntryForOldestPerson() {
+        final AddressBook addressBook = setUpExpectedAddressBook();
+        final AddressBookEntry result = addressBookService.findOldestPerson(addressBook);
+        assertEquals(addressBook.getAddressBookEntries().get(1), result);
+    }
 
     private List<List<String>> setUpFileServiceReturnList() {
         final List<List<String>> addressBook = new ArrayList<>();

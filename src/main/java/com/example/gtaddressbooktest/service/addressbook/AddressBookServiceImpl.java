@@ -38,4 +38,19 @@ public class AddressBookServiceImpl implements AddressBookService {
 
         return addressBook;
     }
+
+    public AddressBookEntry findOldestPerson(AddressBook addressBook) {
+        final List<AddressBookEntry> entries = addressBook.getAddressBookEntries();
+        AddressBookEntry oldestPerson = entries.get(0);
+
+        for (AddressBookEntry entry : entries) {
+            oldestPerson = compareAge(entry, oldestPerson) ? entry : oldestPerson;
+        }
+
+        return oldestPerson;
+    }
+
+    private boolean compareAge(AddressBookEntry firstPerson, AddressBookEntry secondPerson) {
+        return firstPerson.dateOfBirth().isBefore(secondPerson.dateOfBirth());
+    }
 }
