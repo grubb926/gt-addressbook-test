@@ -8,6 +8,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.core.io.Resource;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -42,8 +43,10 @@ class CSVFileServiceTest {
 
     @Test
     public void whenReadingFromFile_withInvalidFile_throwsException() {
-        File invalidFile = null;
-        Assertions.assertThrows(RuntimeException.class, () -> fileService.readFromFile(invalidFile));
+        final File invalidFile = new File("invalid-path");
+        final FileNotFoundException exception = Assertions.assertThrows(FileNotFoundException.class, () -> fileService.readFromFile(invalidFile));
+
+        assertEquals("invalid-path (The system cannot find the file specified)", exception.getMessage());
     }
 
     private List<List<String>> setUpExpectedResults() {

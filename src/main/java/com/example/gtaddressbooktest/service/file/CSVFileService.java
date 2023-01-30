@@ -13,15 +13,13 @@ public class CSVFileService implements FileService {
 
     private static final String DELIMITER_COMMA = ",";
     @Override
-    public List<List<String>> readFromFile(File file) {
+    public List<List<String>> readFromFile(File file) throws FileNotFoundException {
         final List<List<String>> records = new ArrayList<>();
 
         try (Scanner scanner = new Scanner(file)) {
             while (scanner.hasNextLine()) {
                 records.add(getRecordFromLine(scanner.nextLine()));
             }
-        } catch (FileNotFoundException e) {
-            throw new RuntimeException(e);
         }
 
         return records;
