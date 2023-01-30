@@ -79,6 +79,20 @@ class AddressBookServiceImplTest {
         assertEquals(2, result);
     }
 
+    @Test
+    public void whenFindingAgeDifferenceInDays_andFirstIsOlderThanSecond_returnsExpectedLongValue() {
+        final AddressBook addressBook = setUpExpectedAddressBook();
+        final long result = addressBookService.findAgeDifferenceInDays(addressBook.getAddressBookEntries().get(4), addressBook.getAddressBookEntries().get(2));
+        assertEquals(1629, result);
+    }
+
+    @Test
+    public void whenFindingAgeDifferenceInDays_andFirstIsOlderThanSecond_returnsAPositiveLongValue() {
+        final AddressBook addressBook = setUpExpectedAddressBook();
+        final long result = addressBookService.findAgeDifferenceInDays(addressBook.getAddressBookEntries().get(2), addressBook.getAddressBookEntries().get(4));
+        assertEquals(1629, result);
+    }
+
     private List<List<String>> setUpFileServiceReturnList() {
         final List<List<String>> addressBook = new ArrayList<>();
 

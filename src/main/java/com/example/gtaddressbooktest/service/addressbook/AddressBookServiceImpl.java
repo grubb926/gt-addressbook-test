@@ -13,6 +13,8 @@ import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Locale;
 
+import static java.time.temporal.ChronoUnit.DAYS;
+
 @Service
 public class AddressBookServiceImpl implements AddressBookService {
 
@@ -57,6 +59,22 @@ public class AddressBookServiceImpl implements AddressBookService {
             }
         }
         return amount;
+    }
+
+    @Override
+    public long findAgeDifferenceInDays(AddressBookEntry firstPerson, AddressBookEntry secondPerson) {
+        final LocalDate firstPersonDOB = firstPerson.dateOfBirth();
+        final LocalDate secondPersonDOB = secondPerson.dateOfBirth();
+
+        long daysDifference;
+
+        // ensures a positive number regardless of passed in entries
+        if (compareAge(firstPerson, secondPerson))
+            daysDifference = DAYS.between(firstPersonDOB, secondPersonDOB);
+        else
+            daysDifference = DAYS.between(secondPersonDOB, firstPersonDOB);
+
+        return daysDifference;
     }
 
     private boolean compareAge(AddressBookEntry firstPerson, AddressBookEntry secondPerson) {
