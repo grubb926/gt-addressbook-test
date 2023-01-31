@@ -13,10 +13,10 @@ public class CSVFileService implements FileService {
 
     private static final String DELIMITER_COMMA = ",";
     @Override
-    public List<List<String>> readFromFile(File file) throws FileNotFoundException {
+    public List<List<String>> readFromFile(final File file) throws FileNotFoundException {
         final List<List<String>> records = new ArrayList<>();
 
-        try (Scanner scanner = new Scanner(file)) {
+        try (final Scanner scanner = new Scanner(file)) {
             while (scanner.hasNextLine()) {
                 records.add(getRecordFromLine(scanner.nextLine()));
             }
@@ -25,10 +25,10 @@ public class CSVFileService implements FileService {
         return records;
     }
 
-    private List<String> getRecordFromLine(String line) {
+    private List<String> getRecordFromLine(final String line) {
         final List<String> values = new ArrayList<>();
 
-        try (Scanner rowScanner = new Scanner(line)) {
+        try (final Scanner rowScanner = new Scanner(line)) {
             rowScanner.useDelimiter(DELIMITER_COMMA);
             while (rowScanner.hasNext()) {
                 values.add(rowScanner.next().trim());

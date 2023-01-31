@@ -69,13 +69,13 @@ class AddressBookServiceImplTest {
 
     @Test
     public void whenFindingAmountOfSpecifiedGender_andGenderIsFemale_thenReturnsThree() {
-        final int result = addressBookService.countAmountOfGender(setUpExpectedAddressBook(), "female");
+        final int result = addressBookService.findQuantityOfGivenGender(setUpExpectedAddressBook(), "female");
         assertEquals(3, result);
     }
 
     @Test
     public void whenFindingAmountOfSpecifiedGender_andGenderIsMale_thenReturnsTwo() {
-        final int result = addressBookService.countAmountOfGender(setUpExpectedAddressBook(), "male");
+        final int result = addressBookService.findQuantityOfGivenGender(setUpExpectedAddressBook(), "male");
         assertEquals(2, result);
     }
 

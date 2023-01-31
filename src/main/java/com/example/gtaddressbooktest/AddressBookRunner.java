@@ -27,7 +27,7 @@ public class AddressBookRunner implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
         final AddressBook addressBook = addressBookService.generateAddressBookFromFile(file.getFile());
-        int amountOfMales = addressBookService.countAmountOfGender(addressBook, "Male");
+        int amountOfMales = addressBookService.findQuantityOfGivenGender(addressBook, "Male");
         System.out.println("Amount of Males: " + amountOfMales);
 
         final AddressBookEntry oldestPerson = addressBookService.findOldestPerson(addressBook);
