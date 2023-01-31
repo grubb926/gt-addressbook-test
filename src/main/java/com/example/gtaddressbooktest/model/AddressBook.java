@@ -1,4 +1,4 @@
-package com.example.gtaddressbooktest.entity;
+package com.example.gtaddressbooktest.model;
 
 import java.util.ArrayList;
 import java.util.List;

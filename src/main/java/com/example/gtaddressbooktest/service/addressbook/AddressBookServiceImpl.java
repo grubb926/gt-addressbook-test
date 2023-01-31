@@ -1,7 +1,7 @@
 package com.example.gtaddressbooktest.service.addressbook;
 
-import com.example.gtaddressbooktest.entity.AddressBook;
-import com.example.gtaddressbooktest.entity.AddressBookEntry;
+import com.example.gtaddressbooktest.model.AddressBook;
+import com.example.gtaddressbooktest.model.AddressBookEntry;
 import com.example.gtaddressbooktest.service.file.FileService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
